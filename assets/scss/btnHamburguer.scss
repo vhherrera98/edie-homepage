@@ -1,0 +1,76 @@
+:root {
+    --black: #181719;
+    --border-radius-complete: 50px;
+    --border-radius-top-bottom: 20px 4px;
+    --hamburguer-size: 50px;
+    --bar-hamburguer-height: 3px;
+    --bar-hamburguer-width: 25px;
+    --bar-separation: -8px;
+    // --bg-hamburguer: #181719;
+    --bg-bar: #181719;
+}
+
+.btn-hamburguer {
+    display: none;
+    align-items: center;
+    background: none;
+    /* display: flex; */
+    border-radius: var(--border-radius-top-bottom);
+    cursor: pointer;
+    height: var(--hamburguer-size);
+    justify-content: center;
+    position: fixed;
+    width: var(--hamburguer-size);
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+    z-index: 50;
+    /* implementando a un componente */
+    /* top: 50px; */
+    right: 30px;
+}
+
+.btn-hamburguer .bar,
+.btn-hamburguer .bar::before,
+.btn-hamburguer .bar::after {
+    background: var(--bg-bar);
+    height: var(--bar-hamburguer-height);
+    width: var(--bar-hamburguer-width);
+    transition: all .5s ease-in-out;
+    border-radius: 50px;
+}
+
+.btn-hamburguer .bar {
+    position: relative;
+}
+
+.btn-hamburguer .bar::after,
+.btn-hamburguer .bar::before {
+    content: '';
+    left: -50%;
+    margin-left: calc(var(--bar-hamburguer-width) / 2);
+    position: absolute;
+}
+
+.btn-hamburguer .bar::after {
+    top: var(--bar-separation);
+}
+
+.btn-hamburguer .bar::before {
+    bottom: var(--bar-separation);
+}
+
+.btn-hamburguer.active .bar {
+    background: transparent;
+    transform: translateX(50px);
+}
+
+
+.btn-hamburguer.active .bar::after {
+    transform: translateX(-50px) rotate(45deg);
+    top: 0;
+}
+
+.btn-hamburguer.active .bar::before {
+    transform: translateX(-50px) rotate(-45deg);
+    bottom: 0;
+}
